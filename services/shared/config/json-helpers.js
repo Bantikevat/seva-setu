@@ -107,7 +107,9 @@ module.exports = (dataDir) => {
     },
 
     // ─── ADDRESSES ───
-    getAddressesByUser: (userId) => (read().addresses || []).filter((a) => a.user_id === userId),
+    getAddressesByUser:    (userId) => (read().addresses || []).filter((a) => a.user_id === userId),
+    findAddressesByUserId: (userId) => (read().addresses || []).filter((a) => a.user_id === userId),
+    findAddressesByUser:   (userId) => (read().addresses || []).filter((a) => a.user_id === userId),
     findAddressById: (id) => (read().addresses || []).find((a) => a.id === id) || null,
     createAddress: (addr) => {
       const { data, list } = collection('addresses');
@@ -128,11 +130,14 @@ module.exports = (dataDir) => {
     },
 
     // ─── BOOKINGS ───
-    getAllBookings:        () => read().bookings || [],
-    findBookingById:       (id)  => (read().bookings || []).find((b) => b.id === id) || null,
-    findBookingByNumber:   (n)   => (read().bookings || []).find((b) => b.booking_number === n) || null,
-    getBookingsByUser:     (uid) => (read().bookings || []).filter((b) => b.customer_id === uid),
-    getBookingsByWorker:   (wid) => (read().bookings || []).filter((b) => b.worker_id === wid),
+    getAllBookings:          () => read().bookings || [],
+    findBookingById:         (id)  => (read().bookings || []).find((b) => b.id === id) || null,
+    findBookingByNumber:     (n)   => (read().bookings || []).find((b) => b.booking_number === n) || null,
+    getBookingsByUser:       (uid) => (read().bookings || []).filter((b) => b.customer_id === uid),
+    getBookingsByWorker:     (wid) => (read().bookings || []).filter((b) => b.worker_id === wid),
+    findBookingsByCustomer:  (uid) => (read().bookings || []).filter((b) => b.customer_id === uid),
+    findBookingsByWorker:    (wid) => (read().bookings || []).filter((b) => b.worker_id === wid),
+    findBookingsByUser:      (uid) => (read().bookings || []).filter((b) => b.customer_id === uid),
     createBooking: (booking) => {
       const { data, list } = collection('bookings');
       const row = { id: booking.id || uuid(), created_at: new Date().toISOString(), updated_at: new Date().toISOString(), ...booking };
