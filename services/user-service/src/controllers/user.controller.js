@@ -36,7 +36,7 @@ const userController = {
    */
   getMe: async (req, res) => {
     try {
-      const profile = await userService.getProfile(req.user.userId);
+      const profile = await userService.getProfile(req.user.userId, req.user);
 
       if (!profile) {
         return response.notFound(res, 'User nahi mila');

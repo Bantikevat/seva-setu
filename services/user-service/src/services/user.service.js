@@ -17,8 +17,19 @@ const userService = {
    * @param {string} userId
    * @returns {Object|null}
    */
-  getProfile: async (userId) => {
-    const user = await db.findUserById(userId);
+  getProfile: async (userId, jwtPayload) => {
+    let user = await db.findUserById(userId);
+
+    // JSON mode cross-service workaround: if user not in this service's DB
+    // but we have JWT payload (means auth-service verified them), auto-create
+    if (!user && jwtPayload?.phone) {
+      user = await db.createUser({
+        id:    userId,
+        phone: jwtPayload.phone,
+        name:  null,
+        email: null,
+      });
+    }
 
     if (!user) return null;
 
