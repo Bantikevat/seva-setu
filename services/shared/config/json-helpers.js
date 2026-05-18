@@ -8,9 +8,10 @@
  *   module.exports = { ...shared, ...helpers(DATA_DIR) };
  */
 
-const fs   = require('fs');
-const path = require('path');
-const { v4: uuid } = require('uuid');
+const fs     = require('fs');
+const path   = require('path');
+const crypto = require('crypto');
+const uuid   = () => crypto.randomUUID();
 
 const ensureFile = (file) => {
   if (!fs.existsSync(path.dirname(file))) {
