@@ -1,0 +1,94 @@
+version: '3.8'
+
+# Production-style multi-service setup
+# All 7 backend services + Redis + Postgres
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: sevasetu
+      POSTGRES_USER: sevasetu
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sevasetu"]
+      interval: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+
+  auth:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: auth-service } }
+    environment:
+      PORT: 3001
+      NODE_ENV: production
+      DATABASE_URL: postgresql://sevasetu:${DB_PASSWORD:-changeme}@postgres:5432/sevasetu
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET}
+    ports: ["3001:3001"]
+    depends_on: { postgres: { condition: service_healthy }, redis: { condition: service_healthy } }
+    restart: unless-stopped
+
+  user:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: user-service } }
+    environment:
+      PORT: 3002
+      JWT_SECRET: ${JWT_SECRET}
+    ports: ["3002:3002"]
+    depends_on: [auth]
+    restart: unless-stopped
+
+  worker:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: worker-service } }
+    environment:
+      PORT: 3003
+      JWT_SECRET: ${JWT_SECRET}
+    ports: ["3003:3003"]
+    depends_on: [auth]
+    restart: unless-stopped
+
+  booking:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: booking-service } }
+    environment:
+      PORT: 3004
+      JWT_SECRET: ${JWT_SECRET}
+    ports: ["3004:3004"]
+    depends_on: [auth, worker]
+    restart: unless-stopped
+
+  notification:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: notification-service } }
+    environment:
+      PORT: 3005
+      MSG91_AUTH_KEY: ${MSG91_AUTH_KEY:-}
+      WHATSAPP_TOKEN: ${WHATSAPP_TOKEN:-}
+    ports: ["3005:3005"]
+    restart: unless-stopped
+
+  payment:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: payment-service } }
+    environment:
+      PORT: 3006
+      JWT_SECRET: ${JWT_SECRET}
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET}
+    ports: ["3006:3006"]
+    depends_on: [booking]
+    restart: unless-stopped
+
+  ai:
+    build: { context: ., dockerfile: Dockerfile.service, args: { SERVICE: ai-service } }
+    environment:
+      PORT: 3007
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+    ports: ["3007:3007"]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

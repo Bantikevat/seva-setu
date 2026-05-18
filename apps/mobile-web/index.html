@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="theme-color" content="#FF6B35" />
+
+    <!-- SEO Meta Tags (FREE!) -->
+    <title>Seva Setu — Premium Home Services in India | Plumber, Electrician, Cleaning</title>
+    <meta name="description" content="India's #1 home services app. Verified plumbers, electricians, cleaners at your doorstep in 60 min. UPI payments. Transparent pricing. Book now!" />
+    <meta name="keywords" content="home services india, plumber jaipur, electrician booking, AC repair, house cleaning, carpenter, beauty at home, painter, cook, verified workers" />
+    <meta name="author" content="Seva Setu Technologies" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Facebook/WhatsApp share) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Seva Setu — Ghar Ki Har Zaroorat, Ek App Mein" />
+    <meta property="og:description" content="Verified home service workers at your doorstep in 60 minutes. UPI payments. AI matching. Try Seva Setu today!" />
+    <meta property="og:image" content="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=https://sevasetu.in" />
+    <meta property="og:url" content="https://sevasetu.in" />
+    <meta property="og:site_name" content="Seva Setu" />
+    <meta property="og:locale" content="hi_IN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Seva Setu — Premium Home Services" />
+    <meta name="twitter:description" content="India's #1 verified home services platform." />
+    <meta name="twitter:image" content="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=https://sevasetu.in" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Seva Setu" />
+
+    <!-- hreflang — tell Google about Hindi/English versions -->
+    <link rel="alternate" hreflang="hi-IN" href="https://sevasetu.in/" />
+    <link rel="alternate" hreflang="en-IN" href="https://sevasetu.in/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://sevasetu.in/" />
+    <link rel="canonical" href="https://sevasetu.in/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS (FREE Maps) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Google Analytics (FREE) — replace G-SEVASETU01 with your GA4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEVASETU01"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SEVASETU01', {
+        page_title: 'Seva Setu',
+        page_location: window.location.href,
+        send_page_view: true,
+      });
+      // Helper: call window.gtag('event', 'booking_created', {...}) anywhere in the app
+    </script>
+
+    <!-- Schema.org structured data (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Seva Setu",
+      "description": "Premium home services in India",
+      "url": "https://sevasetu.in",
+      "telephone": "+91-6464466512",
+      "areaServed": "India",
+      "priceRange": "₹₹",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1234"
+      }
+    }
+    </script>
+  </head>
+  <body class="font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Register Service Worker for PWA -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(() => console.log('✅ Service Worker registered'))
+            .catch((err) => console.log('SW failed:', err));
+        });
+      }
+
+      // Auto theme detection (FREE)
+      const savedTheme = localStorage.getItem('seva_theme');
+      if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </body>
+</html>

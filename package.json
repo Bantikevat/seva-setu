@@ -1,0 +1,30 @@
+{
+  "name": "seva-setu",
+  "version": "1.0.0",
+  "description": "India's Hyperlocal Home Services Platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "dev:mobile": "npm run dev --workspace=apps/mobile",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:admin": "npm run dev --workspace=apps/admin",
+    "dev:auth": "npm run dev --workspace=services/auth-service",
+    "dev:booking": "npm run dev --workspace=services/booking-service",
+    "db:migrate": "node database/migrations/run.js",
+    "db:seed": "node database/seeds/run.js"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "author": "Seva Setu Team",
+  "license": "UNLICENSED"
+}

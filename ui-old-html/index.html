@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FF6B35">
+  <title>Seva Setu — Premium Home Services</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Hind:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons (Lucide via CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- DARK MODE TOGGLE (Top corner) -->
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <i data-lucide="moon" class="theme-icon-dark"></i>
+    <i data-lucide="sun" class="theme-icon-light"></i>
+  </button>
+
+  <!-- ==========================================
+       PHONE PREVIEW FRAME (Desktop only)
+       ========================================== -->
+  <div class="phone-frame">
+    <div class="phone-notch"></div>
+    <div class="phone-screen">
+
+      <!-- ============================================
+           SCREEN 1 — SPLASH
+           ============================================ -->
+      <div id="screen-splash" class="screen active">
+        <div class="splash-bg">
+          <div class="splash-orb orb-1"></div>
+          <div class="splash-orb orb-2"></div>
+          <div class="splash-orb orb-3"></div>
+
+          <div class="splash-center">
+            <div class="logo-wrapper">
+              <div class="logo-glow"></div>
+              <div class="logo-box">
+                <span class="logo-emoji">🏠</span>
+              </div>
+            </div>
+            <h1 class="splash-name">SEVA SETU</h1>
+            <p class="splash-hindi">सेवा सेतु</p>
+            <p class="splash-tag">India's Premium Home Services</p>
+            <div class="splash-loader">
+              <div class="loader-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SCREEN 2 — ONBOARDING
+           ============================================ -->
+      <div id="screen-onboard" class="screen">
+        <div class="onboard-skip">
+          <button onclick="showScreen('screen-login')" class="skip-btn">Skip</button>
+        </div>
+
+        <div class="onboard-slides">
+          <div class="onboard-slide active" data-slide="0">
+            <div class="onboard-illustration">
+              <div class="illust-bg illust-orange"></div>
+              <span class="illust-emoji">🔧</span>
+              <div class="floating-icon f1">⭐</div>
+              <div class="floating-icon f2">✓</div>
+              <div class="floating-icon f3">💯</div>
+            </div>
+            <h2 class="onboard-title">Verified<br>Professionals</h2>
+            <p class="onboard-desc">Background verified workers<br>aapke ghar par 60 min mein</p>
+          </div>
+
+          <div class="onboard-slide" data-slide="1">
+            <div class="onboard-illustration">
+              <div class="illust-bg illust-blue"></div>
+              <span class="illust-emoji">💳</span>
+              <div class="floating-icon f1">₹</div>
+              <div class="floating-icon f2">🔒</div>
+              <div class="floating-icon f3">✓</div>
+            </div>
+            <h2 class="onboard-title">Transparent<br>Pricing</h2>
+            <p class="onboard-desc">Koi hidden charges nahi<br>Sirf UPI se secure payment</p>
+          </div>
+
+          <div class="onboard-slide" data-slide="2">
+            <div class="onboard-illustration">
+              <div class="illust-bg illust-green"></div>
+              <span class="illust-emoji">🎯</span>
+              <div class="floating-icon f1">🛡️</div>
+              <div class="floating-icon f2">💎</div>
+              <div class="floating-icon f3">🏆</div>
+            </div>
+            <h2 class="onboard-title">Premium<br>Quality</h2>
+            <p class="onboard-desc">Work guarantee with<br>quality assurance</p>
+          </div>
+        </div>
+
+        <div class="onboard-dots">
+          <span class="dot active" data-dot="0"></span>
+          <span class="dot" data-dot="1"></span>
+          <span class="dot" data-dot="2"></span>
+        </div>
+
+        <div class="onboard-actions">
+          <button id="btn-next" class="btn-primary btn-full" onclick="nextSlide()">
+            <span>Continue</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SCREEN 3 — LOGIN
+           ============================================ -->
+      <div id="screen-login" class="screen">
+        <div class="login-hero">
+          <div class="hero-pattern"></div>
+          <div class="hero-content">
+            <div class="hero-logo">🏠</div>
+            <h2 class="hero-title">Welcome back!</h2>
+            <p class="hero-subtitle">Login to continue your journey</p>
+          </div>
+        </div>
+
+        <div class="login-form-wrap">
+          <div class="login-card">
+            <h3 class="form-title">Enter your phone</h3>
+            <p class="form-desc">We'll send you a verification code</p>
+
+            <div class="input-group">
+              <label class="input-label">Mobile Number</label>
+              <div class="phone-field">
+                <div class="country-code">
+                  <span class="flag">🇮🇳</span>
+                  <span>+91</span>
+                </div>
+                <input type="tel" id="phone" maxlength="10" placeholder="9876543210" class="phone-num" autocomplete="tel"/>
+              </div>
+            </div>
+
+            <div id="phone-error" class="form-error"></div>
+
+            <button id="btn-send-otp" class="btn-primary btn-full btn-large" onclick="sendOtp()">
+              <span class="btn-label">Send OTP</span>
+              <i data-lucide="arrow-right" class="btn-icon"></i>
+              <div class="btn-loader"></div>
+            </button>
+
+            <div class="trust-row">
+              <div class="trust-item">
+                <i data-lucide="shield-check"></i>
+                <span>Verified</span>
+              </div>
+              <div class="trust-item">
+                <i data-lucide="zap"></i>
+                <span>60 min</span>
+              </div>
+              <div class="trust-item">
+                <i data-lucide="badge-check"></i>
+                <span>Insured</span>
+              </div>
+            </div>
+
+            <p class="legal-text">
+              By continuing, you agree to our <a href="#">Terms</a> & <a href="#">Privacy Policy</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SCREEN 4 — OTP
+           ============================================ -->
+      <div id="screen-otp" class="screen">
+        <div class="page-header">
+          <button class="icon-btn" onclick="showScreen('screen-login')">
+            <i data-lucide="arrow-left"></i>
+          </button>
+          <h3>Verify Phone</h3>
+          <div style="width: 40px;"></div>
+        </div>
+
+        <div class="otp-wrap">
+          <div class="otp-illustration">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring pulse-2"></div>
+            <div class="otp-emoji">📱</div>
+          </div>
+
+          <h2 class="otp-heading">Enter verification code</h2>
+          <p class="otp-sub">Sent to <strong id="otp-phone-display">+91 9876543210</strong></p>
+
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" class="otp-cell" data-index="0" inputmode="numeric"/>
+            <input type="text" maxlength="1" class="otp-cell" data-index="1" inputmode="numeric"/>
+            <input type="text" maxlength="1" class="otp-cell" data-index="2" inputmode="numeric"/>
+            <input type="text" maxlength="1" class="otp-cell" data-index="3" inputmode="numeric"/>
+            <input type="text" maxlength="1" class="otp-cell" data-index="4" inputmode="numeric"/>
+            <input type="text" maxlength="1" class="otp-cell" data-index="5" inputmode="numeric"/>
+          </div>
+
+          <div id="otp-error" class="form-error otp-error-msg"></div>
+
+          <div class="dev-banner">
+            <i data-lucide="info"></i>
+            <span>Dev Mode: OTP check Auth Service terminal</span>
+          </div>
+
+          <button id="btn-verify" class="btn-primary btn-full btn-large" onclick="verifyOtp()">
+            <span class="btn-label">Verify & Continue</span>
+            <i data-lucide="check" class="btn-icon"></i>
+            <div class="btn-loader"></div>
+          </button>
+
+          <p class="resend-row">
+            Didn't receive? <button class="link-btn" onclick="sendOtp()">Resend</button>
+          </p>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SCREEN 5 — HOME (DASHBOARD)
+           ============================================ -->
+      <div id="screen-home" class="screen">
+
+        <!-- Top Header -->
+        <div class="home-header">
+          <div class="home-header-bg"></div>
+
+          <div class="header-content">
+            <div class="header-row">
+              <div class="location-pill">
+                <i data-lucide="map-pin"></i>
+                <div>
+                  <p class="loc-label">Location</p>
+                  <p class="loc-text">Jaipur, RJ</p>
+                </div>
+                <i data-lucide="chevron-down"></i>
+              </div>
+              <div class="header-actions">
+                <button class="icon-btn-glass">
+                  <i data-lucide="bell"></i>
+                  <span class="notif-dot"></span>
+                </button>
+                <button class="icon-btn-glass" onclick="showScreen('screen-profile')">
+                  <i data-lucide="user"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="greeting-block">
+              <h1 id="greeting-name">Namaste! 👋</h1>
+              <p class="greeting-tag">Ghar ki kya zaroorat hai aaj?</p>
+            </div>
+
+            <!-- Search -->
+            <div class="search-glass">
+              <i data-lucide="search"></i>
+              <input type="text" placeholder="Search 'AC service', 'Plumber'..." />
+              <button class="mic-btn">
+                <i data-lucide="mic"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Offer Banner -->
+        <div class="page-content">
+          <div class="offer-banner">
+            <div class="offer-content">
+              <span class="offer-badge">LIMITED TIME</span>
+              <h3>Get 30% OFF<br>First Booking</h3>
+              <p>Use code: <strong>WELCOME30</strong></p>
+            </div>
+            <div class="offer-emoji">🎉</div>
+          </div>
+
+          <!-- Categories -->
+          <div class="section">
+            <div class="section-header">
+              <h3 class="section-title">Categories</h3>
+              <button class="see-all">See all <i data-lucide="arrow-right"></i></button>
+            </div>
+
+            <div class="categories-grid">
+              <div class="cat-card cat-1">
+                <div class="cat-icon-wrap"><span>🔧</span></div>
+                <p>Plumber</p>
+                <span class="cat-price">₹299</span>
+              </div>
+              <div class="cat-card cat-2">
+                <div class="cat-icon-wrap"><span>⚡</span></div>
+                <p>Electrician</p>
+                <span class="cat-price">₹349</span>
+              </div>
+              <div class="cat-card cat-3">
+                <div class="cat-icon-wrap"><span>❄️</span></div>
+                <p>AC Repair</p>
+                <span class="cat-price">₹499</span>
+              </div>
+              <div class="cat-card cat-4">
+                <div class="cat-icon-wrap"><span>🧹</span></div>
+                <p>Cleaning</p>
+                <span class="cat-price">₹249</span>
+              </div>
+              <div class="cat-card cat-5">
+                <div class="cat-icon-wrap"><span>🪚</span></div>
+                <p>Carpenter</p>
+                <span class="cat-price">₹399</span>
+              </div>
+              <div class="cat-card cat-6">
+                <div class="cat-icon-wrap"><span>👨‍🍳</span></div>
+                <p>Cook</p>
+                <span class="cat-price">₹499</span>
+              </div>
+              <div class="cat-card cat-7">
+                <div class="cat-icon-wrap"><span>💆</span></div>
+                <p>Beauty</p>
+                <span class="cat-price">₹599</span>
+              </div>
+              <div class="cat-card cat-8">
+                <div class="cat-icon-wrap"><span>🎨</span></div>
+                <p>Painter</p>
+                <span class="cat-price">₹699</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Workers -->
+          <div class="section">
+            <div class="section-header">
+              <h3 class="section-title">Top Rated Pros</h3>
+              <button class="see-all">View all <i data-lucide="arrow-right"></i></button>
+            </div>
+
+            <div class="workers-scroll">
+              <div class="worker-card">
+                <div class="worker-img worker-1">
+                  <span class="badge-verified"><i data-lucide="badge-check"></i></span>
+                </div>
+                <div class="worker-info">
+                  <h4>Rajesh K.</h4>
+                  <div class="rating-row">
+                    <i data-lucide="star" class="star-filled"></i>
+                    <span>4.9</span>
+                    <span class="muted">(234)</span>
+                  </div>
+                  <p class="worker-skill">Plumber • 8 yrs</p>
+                  <p class="worker-price">₹299/visit</p>
+                </div>
+              </div>
+
+              <div class="worker-card">
+                <div class="worker-img worker-2">
+                  <span class="badge-verified"><i data-lucide="badge-check"></i></span>
+                </div>
+                <div class="worker-info">
+                  <h4>Sunita M.</h4>
+                  <div class="rating-row">
+                    <i data-lucide="star" class="star-filled"></i>
+                    <span>4.8</span>
+                    <span class="muted">(189)</span>
+                  </div>
+                  <p class="worker-skill">Cleaner • 5 yrs</p>
+                  <p class="worker-price">₹249/visit</p>
+                </div>
+              </div>
+
+              <div class="worker-card">
+                <div class="worker-img worker-3">
+                  <span class="badge-verified"><i data-lucide="badge-check"></i></span>
+                </div>
+                <div class="worker-info">
+                  <h4>Mohan P.</h4>
+                  <div class="rating-row">
+                    <i data-lucide="star" class="star-filled"></i>
+                    <span>5.0</span>
+                    <span class="muted">(312)</span>
+                  </div>
+                  <p class="worker-skill">Electrician • 10 yrs</p>
+                  <p class="worker-price">₹349/visit</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Bookings (placeholder) -->
+          <div class="section">
+            <div class="section-header">
+              <h3 class="section-title">Recent Activity</h3>
+            </div>
+            <div class="empty-state">
+              <div class="empty-icon">📋</div>
+              <p class="empty-title">No bookings yet</p>
+              <p class="empty-desc">Book your first service above</p>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+          <div class="nav-item active">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+          </div>
+          <div class="nav-item">
+            <i data-lucide="search"></i>
+            <span>Search</span>
+          </div>
+          <div class="nav-fab" onclick="showAddressForm()">
+            <i data-lucide="plus"></i>
+          </div>
+          <div class="nav-item">
+            <i data-lucide="clipboard-list"></i>
+            <span>Bookings</span>
+          </div>
+          <div class="nav-item" onclick="showScreen('screen-profile')">
+            <i data-lucide="user"></i>
+            <span>Profile</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           SCREEN 6 — PROFILE
+           ============================================ -->
+      <div id="screen-profile" class="screen">
+        <div class="profile-header">
+          <button class="icon-btn-glass" onclick="showScreen('screen-home')">
+            <i data-lucide="arrow-left"></i>
+          </button>
+          <h3>My Profile</h3>
+          <button class="icon-btn-glass" onclick="logout()">
+            <i data-lucide="log-out"></i>
+          </button>
+        </div>
+
+        <div class="profile-body">
+          <div class="profile-card-premium">
+            <div class="profile-avatar-large">
+              <span>👤</span>
+              <button class="avatar-edit">
+                <i data-lucide="camera"></i>
+              </button>
+            </div>
+            <h2 id="profile-name">Set your name</h2>
+            <p id="profile-phone" class="profile-phone">+91 9876543210</p>
+            <button class="btn-outline" onclick="showProfileEdit()">
+              <i data-lucide="edit-3"></i>
+              <span>Edit Profile</span>
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="stats-row">
+            <div class="stat-card">
+              <span class="stat-emoji">🎯</span>
+              <div>
+                <p class="stat-value">0</p>
+                <p class="stat-label">Bookings</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-emoji">⭐</span>
+              <div>
+                <p class="stat-value">—</p>
+                <p class="stat-label">Rating</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-emoji">💎</span>
+              <div>
+                <p class="stat-value">100</p>
+                <p class="stat-label">Points</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Addresses -->
+          <div class="section">
+            <div class="section-header">
+              <h3 class="section-title">My Addresses</h3>
+              <button class="add-btn" onclick="showAddressForm()">
+                <i data-lucide="plus"></i> Add
+              </button>
+            </div>
+            <div id="addresses-list">
+              <div class="skeleton-card"></div>
+              <div class="skeleton-card"></div>
+            </div>
+          </div>
+
+          <!-- Menu -->
+          <div class="menu-section">
+            <div class="menu-item">
+              <span class="menu-icon"><i data-lucide="gift"></i></span>
+              <span class="menu-text">Refer & Earn</span>
+              <span class="menu-badge">₹100</span>
+              <i data-lucide="chevron-right" class="menu-arrow"></i>
+            </div>
+            <div class="menu-item">
+              <span class="menu-icon"><i data-lucide="help-circle"></i></span>
+              <span class="menu-text">Help & Support</span>
+              <i data-lucide="chevron-right" class="menu-arrow"></i>
+            </div>
+            <div class="menu-item">
+              <span class="menu-icon"><i data-lucide="file-text"></i></span>
+              <span class="menu-text">Terms & Privacy</span>
+              <i data-lucide="chevron-right" class="menu-arrow"></i>
+            </div>
+            <div class="menu-item">
+              <span class="menu-icon"><i data-lucide="settings"></i></span>
+              <span class="menu-text">Settings</span>
+              <i data-lucide="chevron-right" class="menu-arrow"></i>
+            </div>
+          </div>
+
+          <button class="btn-danger btn-full" onclick="logout()">
+            <i data-lucide="log-out"></i>
+            <span>Logout</span>
+          </button>
+
+          <div class="spacer"></div>
+        </div>
+      </div>
+
+      <!-- ============================================
+           MODALS
+           ============================================ -->
+
+      <!-- Profile Edit Modal (Bottom Sheet) -->
+      <div id="modal-profile" class="bottom-sheet">
+        <div class="sheet-overlay" onclick="closeModal('modal-profile')"></div>
+        <div class="sheet-content">
+          <div class="sheet-handle"></div>
+          <h3 class="sheet-title">Edit Profile</h3>
+
+          <div class="input-group">
+            <label class="input-label">Full Name</label>
+            <input type="text" id="edit-name" placeholder="Aapka naam" class="input-premium"/>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Email Address</label>
+            <input type="email" id="edit-email" placeholder="aap@example.com" class="input-premium"/>
+          </div>
+
+          <div class="sheet-actions">
+            <button class="btn-outline btn-full" onclick="closeModal('modal-profile')">Cancel</button>
+            <button class="btn-primary btn-full" onclick="saveProfile()">Save Changes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Modal -->
+      <div id="modal-address" class="bottom-sheet">
+        <div class="sheet-overlay" onclick="closeModal('modal-address')"></div>
+        <div class="sheet-content">
+          <div class="sheet-handle"></div>
+          <h3 class="sheet-title">Add New Address</h3>
+
+          <div class="address-type-row">
+            <button class="addr-type active" data-type="Ghar">
+              <i data-lucide="home"></i> Home
+            </button>
+            <button class="addr-type" data-type="Office">
+              <i data-lucide="briefcase"></i> Work
+            </button>
+            <button class="addr-type" data-type="Other">
+              <i data-lucide="map-pin"></i> Other
+            </button>
+          </div>
+
+          <div class="input-group">
+            <label class="input-label">Full Address</label>
+            <textarea id="addr-full" placeholder="House no, street, landmark, city" class="input-premium" rows="3"></textarea>
+          </div>
+
+          <div class="sheet-actions">
+            <button class="btn-outline btn-full" onclick="closeModal('modal-address')">Cancel</button>
+            <button class="btn-primary btn-full" onclick="saveAddress()">Save Address</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="toast" class="toast">
+        <i data-lucide="check-circle"></i>
+        <span class="toast-msg">Success!</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-card">
+    <div class="info-header">
+      <span class="info-emoji">🚀</span>
+      <h3>Seva Setu — Premium Edition</h3>
+    </div>
+    <p>Apple-quality UI · Real backend · Production grade</p>
+    <div class="info-stats">
+      <div><strong>2</strong> Services</div>
+      <div><strong>6</strong> Screens</div>
+      <div><strong>100%</strong> Working</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

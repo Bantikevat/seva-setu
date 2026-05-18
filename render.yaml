@@ -1,0 +1,152 @@
+services:
+  - type: web
+    name: seva-auth
+    runtime: node
+    rootDir: services/auth-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-user
+    runtime: node
+    rootDir: services/user-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-worker
+    runtime: node
+    rootDir: services/worker-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-booking
+    runtime: node
+    rootDir: services/booking-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-notification
+    runtime: node
+    rootDir: services/notification-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-payment
+    runtime: node
+    rootDir: services/payment-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: RAZORPAY_KEY_ID
+        value: rzp_test_SovxrLxCFsffY2
+      - key: RAZORPAY_KEY_SECRET
+        value: S7oO7rkOhz5k2QnY4ES5qfHa
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-ai
+    runtime: node
+    rootDir: services/ai-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app
+
+  - type: web
+    name: seva-admin
+    runtime: node
+    rootDir: services/admin-service
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        fromService: { type: web, name: seva-auth, envVarKey: JWT_SECRET }
+      - key: CORS_ORIGINS
+        value: https://sevasetu-ujjain.vercel.app,https://seva-setu-phi.vercel.app

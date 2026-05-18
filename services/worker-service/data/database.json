@@ -1,0 +1,247 @@
+{
+  "users": [],
+  "workers": [
+    {
+      "id": "d339ea16-c0bf-4930-8e98-b43d53630260",
+      "created_at": "2026-05-16T19:44:01.346Z",
+      "updated_at": "2026-05-16T19:44:01.346Z",
+      "phone": "9000000001",
+      "name": "Rajesh Kumar",
+      "bio": "8 saal ka experience plumbing aur pipe repair mein",
+      "profile_photo": null,
+      "latitude": 23.1765,
+      "longitude": 75.7885,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 4.9,
+      "total_jobs": 234,
+      "total_earnings": 70200,
+      "joined_at": "2026-05-16T19:44:01.346Z"
+    },
+    {
+      "id": "1307bb13-4ad8-4e7f-9d68-611fb3efb79a",
+      "created_at": "2026-05-16T19:44:01.349Z",
+      "updated_at": "2026-05-16T19:44:01.349Z",
+      "phone": "9000000002",
+      "name": "Sunita Devi",
+      "bio": "Ghar safai aur deep cleaning specialist",
+      "profile_photo": null,
+      "latitude": 23.182,
+      "longitude": 75.795,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 4.8,
+      "total_jobs": 189,
+      "total_earnings": 56700,
+      "joined_at": "2026-05-16T19:44:01.349Z"
+    },
+    {
+      "id": "94056aea-3cea-462b-bb1c-ca43d0716a4c",
+      "created_at": "2026-05-16T19:44:01.352Z",
+      "updated_at": "2026-05-16T19:44:01.352Z",
+      "phone": "9000000003",
+      "name": "Mohan Singh",
+      "bio": "Master electrician - wiring, switches, fans",
+      "profile_photo": null,
+      "latitude": 23.169,
+      "longitude": 75.78,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 5,
+      "total_jobs": 312,
+      "total_earnings": 93600,
+      "joined_at": "2026-05-16T19:44:01.352Z"
+    },
+    {
+      "id": "114e231f-3ad5-4aa9-b025-435f773e24d2",
+      "created_at": "2026-05-16T19:44:01.356Z",
+      "updated_at": "2026-05-16T19:44:01.356Z",
+      "phone": "9000000004",
+      "name": "Ramesh Sharma",
+      "bio": "Furniture making, repair, polish ka kaam",
+      "profile_photo": null,
+      "latitude": 23.184,
+      "longitude": 75.795,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 4.7,
+      "total_jobs": 156,
+      "total_earnings": 46800,
+      "joined_at": "2026-05-16T19:44:01.356Z"
+    },
+    {
+      "id": "45196c79-4522-4332-b0b6-b923fa9c9e61",
+      "created_at": "2026-05-16T19:44:01.359Z",
+      "updated_at": "2026-05-16T19:44:01.359Z",
+      "phone": "9000000005",
+      "name": "Priya Nair",
+      "bio": "Beauty, makeup, hair styling at home",
+      "profile_photo": null,
+      "latitude": 23.19,
+      "longitude": 75.785,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 4.9,
+      "total_jobs": 278,
+      "total_earnings": 83400,
+      "joined_at": "2026-05-16T19:44:01.359Z"
+    },
+    {
+      "id": "58692a36-fe6e-4adc-8555-1425da9f958f",
+      "created_at": "2026-05-16T19:44:01.361Z",
+      "updated_at": "2026-05-16T19:44:01.361Z",
+      "phone": "9000000006",
+      "name": "Vijay Patel",
+      "bio": "House painting, wall texture, designs",
+      "profile_photo": null,
+      "latitude": 23.172,
+      "longitude": 75.79,
+      "city_id": null,
+      "is_verified": true,
+      "is_available": true,
+      "is_active": true,
+      "rating_average": 4.6,
+      "total_jobs": 98,
+      "total_earnings": 29400,
+      "joined_at": "2026-05-16T19:44:01.361Z"
+    }
+  ],
+  "bookings": [],
+  "categories": [
+    {
+      "id": "094ce55d-3fe7-497a-90e8-08504930c6d9",
+      "created_at": "2026-05-16T19:44:01.334Z",
+      "name": "Plumber",
+      "name_hindi": "प्लंबर",
+      "emoji": "🔧",
+      "base_price": 299,
+      "is_active": true
+    },
+    {
+      "id": "ef28d99f-33e4-4611-b5fb-547ec4615756",
+      "created_at": "2026-05-16T19:44:01.336Z",
+      "name": "Electrician",
+      "name_hindi": "इलेक्ट्रीशियन",
+      "emoji": "⚡",
+      "base_price": 349,
+      "is_active": true
+    },
+    {
+      "id": "53e20b7a-1e4b-47a7-9794-031507c71365",
+      "created_at": "2026-05-16T19:44:01.339Z",
+      "name": "AC Repair",
+      "name_hindi": "एसी मरम्मत",
+      "emoji": "❄️",
+      "base_price": 499,
+      "is_active": true
+    },
+    {
+      "id": "02d7af33-6189-4748-ba71-bb081db7bfac",
+      "created_at": "2026-05-16T19:44:01.341Z",
+      "name": "Cleaning",
+      "name_hindi": "सफाई",
+      "emoji": "🧹",
+      "base_price": 249,
+      "is_active": true
+    },
+    {
+      "id": "fced8165-5fa9-4219-8466-d4d6c8d639ea",
+      "created_at": "2026-05-16T19:44:01.342Z",
+      "name": "Carpenter",
+      "name_hindi": "बढ़ई",
+      "emoji": "🪚",
+      "base_price": 399,
+      "is_active": true
+    },
+    {
+      "id": "eb6f3bc3-7407-4507-b8bd-f565a4935343",
+      "created_at": "2026-05-16T19:44:01.343Z",
+      "name": "Cook",
+      "name_hindi": "रसोइया",
+      "emoji": "👨‍🍳",
+      "base_price": 499,
+      "is_active": true
+    },
+    {
+      "id": "15dab228-e7ae-4afe-8caf-0cccdc959a29",
+      "created_at": "2026-05-16T19:44:01.344Z",
+      "name": "Beauty",
+      "name_hindi": "ब्यूटीशियन",
+      "emoji": "💆",
+      "base_price": 599,
+      "is_active": true
+    },
+    {
+      "id": "d1c06415-e017-44a1-8b0e-e0fe143314c7",
+      "created_at": "2026-05-16T19:44:01.344Z",
+      "name": "Painter",
+      "name_hindi": "पेंटर",
+      "emoji": "🎨",
+      "base_price": 699,
+      "is_active": true
+    }
+  ],
+  "addresses": [],
+  "rewards": [],
+  "reviews": [],
+  "worker_skills": [
+    {
+      "id": "6341f36f-4537-4a35-8e50-cbb177f693f1",
+      "created_at": "2026-05-16T19:44:01.347Z",
+      "worker_id": "d339ea16-c0bf-4930-8e98-b43d53630260",
+      "category_id": "094ce55d-3fe7-497a-90e8-08504930c6d9",
+      "experience_years": 8,
+      "is_primary": true
+    },
+    {
+      "id": "9eccb29f-5fa4-492e-8127-3eff4d95d29b",
+      "created_at": "2026-05-16T19:44:01.350Z",
+      "worker_id": "1307bb13-4ad8-4e7f-9d68-611fb3efb79a",
+      "category_id": "02d7af33-6189-4748-ba71-bb081db7bfac",
+      "experience_years": 5,
+      "is_primary": true
+    },
+    {
+      "id": "6e416130-9ab1-495f-b56a-11c8fe1508d1",
+      "created_at": "2026-05-16T19:44:01.353Z",
+      "worker_id": "94056aea-3cea-462b-bb1c-ca43d0716a4c",
+      "category_id": "ef28d99f-33e4-4611-b5fb-547ec4615756",
+      "experience_years": 10,
+      "is_primary": true
+    },
+    {
+      "id": "b27dd64a-8532-4885-b0eb-d2ff05000cf8",
+      "created_at": "2026-05-16T19:44:01.357Z",
+      "worker_id": "114e231f-3ad5-4aa9-b025-435f773e24d2",
+      "category_id": "fced8165-5fa9-4219-8466-d4d6c8d639ea",
+      "experience_years": 12,
+      "is_primary": true
+    },
+    {
+      "id": "bfdaeeb9-ce2a-4474-a1f0-cf0ab2a33769",
+      "created_at": "2026-05-16T19:44:01.360Z",
+      "worker_id": "45196c79-4522-4332-b0b6-b923fa9c9e61",
+      "category_id": "15dab228-e7ae-4afe-8caf-0cccdc959a29",
+      "experience_years": 6,
+      "is_primary": true
+    },
+    {
+      "id": "5fb687cd-de62-4aa7-8ef1-fe8de0af7d43",
+      "created_at": "2026-05-16T19:44:01.362Z",
+      "worker_id": "58692a36-fe6e-4adc-8555-1425da9f958f",
+      "category_id": "d1c06415-e017-44a1-8b0e-e0fe143314c7",
+      "experience_years": 7,
+      "is_primary": true
+    }
+  ]
+}

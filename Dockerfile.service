@@ -1,0 +1,21 @@
+# SEVA SETU — Backend Service Dockerfile
+# Usage: docker build -f Dockerfile.service --build-arg SERVICE=auth-service -t seva-auth .
+
+FROM node:20-alpine
+
+ARG SERVICE
+WORKDIR /app
+
+# Copy service files
+COPY services/${SERVICE}/package*.json ./
+RUN npm install --production
+
+COPY services/${SERVICE}/ ./
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --quiet --tries=1 --spider http://localhost:${PORT:-3000}/health || exit 1
+
+EXPOSE 3000
+
+CMD ["node", "src/index.js"]

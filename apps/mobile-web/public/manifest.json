@@ -1,0 +1,40 @@
+{
+  "name": "Seva Setu — Premium Home Services",
+  "short_name": "Seva Setu",
+  "description": "India's Premium Home Services. Verified workers, 60 min delivery.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FF6B35",
+  "theme_color": "#FF6B35",
+  "lang": "hi-IN",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='40' fill='%23FF6B35'/><text x='50%25' y='50%25' font-size='110' text-anchor='middle' dy='.35em'>🏠</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='100' fill='%23FF6B35'/><text x='50%25' y='50%25' font-size='300' text-anchor='middle' dy='.35em'>🏠</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Book Plumber",     "short_name": "Plumber",     "url": "/workers?category=Plumber&emoji=🔧",     "description": "Plumber book karo" },
+    { "name": "Book Electrician", "short_name": "Electrician", "url": "/workers?category=Electrician&emoji=⚡",  "description": "Electrician book karo" },
+    { "name": "AC Repair",        "short_name": "AC Repair",   "url": "/workers?category=AC+Repair&emoji=❄️",   "description": "AC repair book karo" },
+    { "name": "My Bookings",      "short_name": "Bookings",    "url": "/bookings",                              "description": "Saari bookings dekho" },
+    { "name": "Search",           "short_name": "Search",      "url": "/search",                                "description": "Service search karo" }
+  ],
+  "share_target": {
+    "action":  "/search",
+    "method":  "GET",
+    "params":  { "title": "title", "text": "q", "url": "url" }
+  },
+  "screenshots": [],
+  "categories": ["lifestyle", "shopping", "utilities"]
+}
