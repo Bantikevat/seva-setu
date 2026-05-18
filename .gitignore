@@ -28,3 +28,5 @@ coverage/
 data/database.json
 data/*.json
 !data/.gitkeep
+
+.github/workflows/
